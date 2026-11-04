@@ -120,9 +120,9 @@ function Index() {
             <div className="flex items-end gap-2">{humans.map((_, i) => (
               <div key={i} className={`text-4xl transition ${i <= open ? "opacity-100" : "opacity-20"}`} style={{ fontSize: `${1.8 + i * 0.5}rem` }}>{i < 2 ? "🐒" : "🧍"}</div>
             ))}</div>
-            <p className="mt-6 text-sm font-bold text-accent">{humans[open].a}</p>
-            <h3 className="text-3xl font-bold">{humans[open].n}</h3>
-            <p className="mt-2 text-lg text-muted-foreground">{humans[open].d}</p>
+            <p className="mt-6 text-sm font-bold text-accent">{humans[open]!.a}</p>
+            <h3 className="text-3xl font-bold">{humans[open]!.n}</h3>
+            <p className="mt-2 text-lg text-muted-foreground">{humans[open]!.d}</p>
           </div>
         </div>
       </section>
@@ -165,12 +165,12 @@ function Quiz() {
           </div>
         ) : (
           <div key={i} className="animate-rise mt-6">
-            <p className="text-lg font-semibold">{quiz[i].q}</p>
+            <p className="text-lg font-semibold">{quiz[i]!.q}</p>
             <div className="mt-5 grid gap-3">
-              {quiz[i].o.map((o, k) => {
-                const st = pick === null ? "hover:border-primary" : k === quiz[i].a ? "border-primary bg-primary/20" : k === pick ? "border-destructive bg-destructive/20" : "opacity-50";
+              {quiz[i]!.o.map((o, k) => {
+                const st = pick === null ? "hover:border-primary" : k === quiz[i]!.a ? "border-primary bg-primary/20" : k === pick ? "border-destructive bg-destructive/20" : "opacity-50";
                 return (
-                  <button key={o} disabled={pick !== null} onClick={() => { setPick(k); if (k === quiz[i].a) setScore(score + 1); setTimeout(() => { setPick(null); setI(i + 1); }, 1100); }}
+                  <button key={o} disabled={pick !== null} onClick={() => { setPick(k); if (k === quiz[i]!.a) setScore(score + 1); setTimeout(() => { setPick(null); setI(i + 1); }, 1100); }}
                     className={`rounded-xl border px-4 py-3 font-semibold transition ${st}`}>{o}</button>
                 );
               })}
