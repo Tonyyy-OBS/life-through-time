@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site";
+import { User, Bird, Fish, TreePine, Clapperboard, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/videos")({
   head: () => ({
@@ -14,11 +15,11 @@ export const Route = createFileRoute("/videos")({
 });
 
 // Para adicionar um vídeo: coloque o link em "src" (ex: "/videos/humano.mp4" ou link do YouTube embed)
-const videos: { t: string; d: string; e: string; src?: string }[] = [
-  { e: "🧍", t: "A evolução humana", d: "Do Australopithecus ao Homo sapiens, quadro a quadro." },
-  { e: "🦖", t: "Dos dinossauros às aves", d: "Como os dinossauros viraram os pássaros de hoje." },
-  { e: "🐟", t: "Da água para a terra", d: "Peixes, anfíbios e a conquista do continente." },
-  { e: "🌳", t: "Seleção natural", d: "Por que alguns sobrevivem e outros não." },
+const videos: { t: string; d: string; I: LucideIcon; src?: string }[] = [
+  { I: User, t: "A evolução humana", d: "Do Australopithecus ao Homo sapiens, quadro a quadro." },
+  { I: Bird, t: "Dos dinossauros às aves", d: "Como os dinossauros viraram os pássaros de hoje." },
+  { I: Fish, t: "Da água para a terra", d: "Peixes, anfíbios e a conquista do continente." },
+  { I: TreePine, t: "Seleção natural", d: "Por que alguns sobrevivem e outros não." },
 ];
 
 function Videos() {
@@ -44,8 +45,8 @@ function Videos() {
                   )
                 ) : (
                   <div className="flex h-full flex-col items-center justify-center gap-3">
-                    <span className="animate-float text-6xl">{v.e}</span>
-                    <span className="rounded-full border border-dashed px-4 py-1 text-sm text-muted-foreground">🎬 Vídeo em breve</span>
+                    <v.I className="animate-float h-16 w-16 text-primary" strokeWidth={1.3} />
+                    <span className="rounded-full border border-dashed px-4 py-1 text-sm text-muted-foreground"><Clapperboard className="mr-1 inline h-4 w-4" />Vídeo em breve</span>
                   </div>
                 )}
                 <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">EP {i + 1}</span>
