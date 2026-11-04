@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Dna } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
@@ -29,7 +30,7 @@ export function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled ? "bg-background/80 backdrop-blur-lg border-b" : ""}`}>
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <Link to="/" className="font-display text-xl font-bold">🧬 Grupo <span className="text-primary">6</span></Link>
+        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold leading-tight sm:text-xl"><Dna className="h-6 w-6 text-primary" /><span>Evolução <span className="text-primary">&amp;</span> Diversidade</span></Link>
         <div className="flex gap-1 sm:gap-2">
           {links.map((l) => (
             <Link key={l.to} to={l.to} activeOptions={{ exact: true }}
