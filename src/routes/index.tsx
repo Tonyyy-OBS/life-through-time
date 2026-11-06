@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   Microscope, Fish, Footprints, Bone, Bird, PawPrint, User, Dna, Globe2, Trophy,
   Rabbit, Feather, Turtle, Bug, Layers, GitCompare, Leaf, TreePine, Flame, Factory,
   Droplets, ShieldCheck, BookOpen, Play, ArrowDown, Brain,
 } from "lucide-react";
 import hero from "@/assets/hero-tree.jpg";
-import humanEvo from "@/assets/human-evolution.jpg";
 import darwin from "@/assets/darwin.jpg";
 import bio from "@/assets/biodiversity.jpg";
 import { Reveal } from "@/components/site";
+import { HumanEvolution } from "@/components/human-evolution";
+import { ScienceQuiz } from "@/components/science-quiz";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,28 +24,20 @@ export const Route = createFileRoute("/")({
 });
 
 const timeline = [
-  { I: Microscope, t: "3,8 bilhões de anos", n: "Primeiras células", d: "Seres unicelulares procariontes surgem nos oceanos primitivos." },
+  { I: Microscope, t: "cerca de 3,5 bilhões de anos", n: "Primeiras células", d: "Os fósseis mais antigos aceitos indicam seres unicelulares procariontes." },
   { I: Fish, t: "500 milhões de anos", n: "Peixes", d: "Surgem os primeiros vertebrados, com coluna vertebral." },
   { I: Footprints, t: "370 milhões de anos", n: "Anfíbios", d: "Os vertebrados saem da água e conquistam a terra firme." },
-  { I: Bone, t: "230 milhões de anos", n: "Dinossauros", d: "Répteis dominam o planeta até a extinção, há 66 milhões de anos." },
+  { I: Bone, t: "230 milhões de anos", n: "Dinossauros", d: "Diversificam-se por milhões de anos; os não avianos se extinguem há 66 milhões de anos." },
   { I: Bird, t: "150 milhões de anos", n: "Aves", d: "Descendentes de dinossauros terópodes conquistam os céus." },
   { I: PawPrint, t: "60 milhões de anos", n: "Primatas", d: "Mamíferos com mãos preênseis, visão frontal e cérebros maiores." },
   { I: User, t: "300 mil anos", n: "Homo sapiens", d: "Nossa espécie: linguagem, cultura e ferramentas complexas." },
 ];
 
-const humans = [
-  { n: "Australopithecus", a: "4 a 2 milhões de anos", d: "Já era bípede (andava em duas pernas), mas tinha cérebro pequeno e ainda subia em árvores. O fóssil mais famoso é a “Lucy”." },
-  { n: "Homo habilis", a: "2,4 a 1,4 milhão de anos", d: "O “homem habilidoso”: fabricou as primeiras ferramentas de pedra lascada." },
-  { n: "Homo erectus", a: "1,9 milhão a 140 mil anos", d: "Postura totalmente ereta, dominou o fogo e foi o primeiro a sair da África." },
-  { n: "Neandertal", a: "400 a 40 mil anos", d: "Forte e adaptado ao frio da Europa. Enterrava seus mortos e conviveu com o Homo sapiens." },
-  { n: "Homo sapiens", a: "300 mil anos até hoje", d: "Cérebro grande, linguagem complexa, arte e tecnologia. Espalhou-se por todo o planeta." },
-];
-
 const evidences = [
   { I: Layers, n: "Fósseis", d: "Restos preservados em rochas mostram seres que já viveram e como mudaram com o tempo." },
   { I: GitCompare, n: "Anatomia comparada", d: "O braço humano, a asa do morcego e a nadadeira da baleia têm os mesmos ossos: órgãos homólogos." },
-  { I: Dna, n: "DNA", d: "Humanos e chimpanzés compartilham cerca de 98% do DNA, prova de um ancestral comum." },
-  { I: Microscope, n: "Embriologia", d: "Embriões de vertebrados diferentes são muito parecidos nas primeiras fases." },
+  { I: Dna, n: "DNA", d: "Humanos e chimpanzés compartilham grande parte das sequências de DNA, evidência de um ancestral comum (não descendemos dos chimpanzés)." },
+  { I: Microscope, n: "Embriologia", d: "Embriões de vertebrados compartilham estruturas em fases iniciais, como arcos faríngeos e cauda, indicando origem comum." },
 ];
 
 const groups = [
@@ -64,14 +56,6 @@ const threats = [
   { I: Droplets, n: "Mudanças climáticas", d: "Alteram ambientes mais rápido do que as espécies conseguem se adaptar." },
 ];
 
-const quiz = [
-  { q: "Quem propôs a teoria da seleção natural?", o: ["Isaac Newton", "Charles Darwin", "Albert Einstein"], a: 1 },
-  { q: "As aves descendem de qual grupo?", o: ["Dinossauros", "Peixes", "Insetos"], a: 0 },
-  { q: "Qual é o grupo animal com mais espécies?", o: ["Mamíferos", "Aves", "Insetos"], a: 2 },
-  { q: "Qual foi o primeiro hominídeo a sair da África?", o: ["Homo erectus", "Australopithecus", "Neandertal"], a: 0 },
-  { q: "Órgãos com a mesma origem, mas funções diferentes, são chamados de:", o: ["Análogos", "Homólogos", "Vestigiais"], a: 1 },
-];
-
 function Title({ k, children, sub }: { k: string; children: React.ReactNode; sub?: string }) {
   return (
     <Reveal>
@@ -83,8 +67,6 @@ function Title({ k, children, sub }: { k: string; children: React.ReactNode; sub
 }
 
 function Index() {
-  const [open, setOpen] = useState(0);
-  const h = humans[open]!;
   return (
     <main>
       <section className="relative flex min-h-screen items-end overflow-hidden">
@@ -197,27 +179,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="humana" className="scroll-mt-24 bg-secondary/40 py-24">
-        <div className="mx-auto max-w-6xl px-5">
-          <Title k="5. Evolução humana" sub="Clique em cada espécie para conhecer melhor nossos ancestrais.">De onde <span className="text-primary">viemos</span>?</Title>
-          <Reveal><img src={humanEvo} alt="Evolução humana do Australopithecus ao Homo sapiens" width={1600} height={704} loading="lazy" className="mt-10 aspect-[16/6] w-full rounded-3xl border object-cover object-top" /></Reveal>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {humans.map((x, i) => (
-              <button key={x.n} onClick={() => setOpen(i)}
-                className={`rounded-full border px-5 py-2 font-semibold transition ${open === i ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
-                {x.n}
-              </button>
-            ))}
-          </div>
-          <div key={open} className="animate-rise mt-6 rounded-3xl border bg-card p-8">
-            <div className="flex gap-2">{humans.map((_, i) => <div key={i} className={`h-1.5 flex-1 rounded-full transition ${i <= open ? "bg-primary" : "bg-muted"}`} />)}</div>
-            <p className="mt-6 text-sm font-bold text-accent">{h.a}</p>
-            <h3 className="text-3xl font-bold italic">{h.n}</h3>
-            <p className="mt-2 text-lg text-muted-foreground">{h.d}</p>
-          </div>
-          <Reveal><p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground"><Brain className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Atenção: o ser humano <b className="text-foreground">não veio do macaco</b>. Humanos e macacos atuais têm um <b className="text-foreground">ancestral comum</b>.</p></Reveal>
-        </div>
-      </section>
+      <HumanEvolution />
 
       <section id="diversidade" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24">
         <Title k="6. Diversidade biológica" sub="Biodiversidade é a variedade de seres vivos de um lugar. Estima-se que existam cerca de 8,7 milhões de espécies na Terra, e a maioria ainda nem foi descoberta.">A diversidade <span className="text-primary">animal</span></Title>
@@ -266,7 +228,7 @@ function Index() {
         </Reveal>
       </section>
 
-      <Quiz />
+      <ScienceQuiz />
 
       <section className="mx-auto max-w-4xl px-5 pb-24">
         <Reveal>
@@ -277,6 +239,7 @@ function Index() {
               <li>AMABIS, J. M.; MARTHO, G. R. <i>Biologia Moderna</i>. São Paulo: Moderna.</li>
               <li>MINISTÉRIO DO MEIO AMBIENTE. Biodiversidade brasileira. gov.br/mma</li>
               <li>MORA, C. et al. How many species are there on Earth and in the ocean? <i>PLoS Biology</i>, 2011.</li>
+              <li>UNIVERSITY OF CALIFORNIA MUSEUM OF PALEONTOLOGY. Understanding Evolution. evolution.berkeley.edu</li>
               <li>SMITHSONIAN NATIONAL MUSEUM OF NATURAL HISTORY. Human Origins. humanorigins.si.edu</li>
             </ul>
           </div>
@@ -286,37 +249,3 @@ function Index() {
   );
 }
 
-function Quiz() {
-  const [i, setI] = useState(0);
-  const [pick, setPick] = useState<number | null>(null);
-  const [score, setScore] = useState(0);
-  const cur = quiz[i];
-  return (
-    <section className="mx-auto max-w-2xl px-5 pb-24">
-      <div className="rounded-3xl border bg-card p-8 text-center">
-        <h2 className="flex items-center justify-center gap-3 text-3xl font-extrabold"><Brain className="h-7 w-7 text-primary" /> Teste seus conhecimentos</h2>
-        {!cur ? (
-          <div className="animate-rise mt-6">
-            <p className="text-5xl font-extrabold text-primary">{score}/{quiz.length}</p>
-            <p className="mt-2 text-muted-foreground">{score === quiz.length ? "Perfeito! Você é um especialista em evolução." : "Bom trabalho! Tente de novo para gabaritar."}</p>
-            <button onClick={() => { setI(0); setScore(0); setPick(null); }} className="mt-6 rounded-full bg-primary px-6 py-2 font-bold text-primary-foreground">Jogar de novo</button>
-          </div>
-        ) : (
-          <div key={i} className="animate-rise mt-6">
-            <p className="text-sm text-muted-foreground">Pergunta {i + 1} de {quiz.length}</p>
-            <p className="mt-2 text-lg font-semibold">{cur.q}</p>
-            <div className="mt-5 grid gap-3">
-              {cur.o.map((o, k) => {
-                const st = pick === null ? "hover:border-primary" : k === cur.a ? "border-primary bg-primary/20" : k === pick ? "border-destructive bg-destructive/20" : "opacity-50";
-                return (
-                  <button key={o} disabled={pick !== null} onClick={() => { setPick(k); if (k === cur.a) setScore((s) => s + 1); setTimeout(() => { setPick(null); setI((n) => n + 1); }, 1100); }}
-                    className={`rounded-xl border px-4 py-3 font-semibold transition ${st}`}>{o}</button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
