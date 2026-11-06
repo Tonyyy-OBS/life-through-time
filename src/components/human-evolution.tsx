@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, GitBranch, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { HomininScene } from '@/components/hominin-scene';
+import { HomininStage } from '@/components/hominin-stage';
 import { hominins } from '@/lib/evolution';
 
 export function HumanEvolution() {
@@ -15,7 +15,7 @@ export function HumanEvolution() {
       <p className="mt-4 max-w-3xl text-lg text-muted-foreground">Bipedalismo, mudanças no crânio e modos de vida distintos: a história humana não foi uma fila de espécies, nem uma marcha rumo à perfeição.</p>
       <div className="mt-8 flex flex-wrap gap-2" aria-label="Espécies de hominínios">{hominins.map((h,i) => <Button key={h.id} variant={selected===i ? 'default':'outline'} aria-pressed={selected===i} onClick={() => setSelected(i)} className="h-auto min-h-11 whitespace-normal">{h.short}</Button>)}</div>
       <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_1fr]">
-        <HomininScene species={selected} />
+        <HomininStage species={selected} />
         <div key={human.id} className="animate-rise py-6" aria-live="polite">
           <p className="font-semibold text-accent">{human.age}</p>
           <h3 className="mt-3 break-words text-3xl font-bold italic sm:text-4xl">{human.name}</h3>
@@ -25,7 +25,7 @@ export function HumanEvolution() {
           <Button asChild variant="link" className="mt-4 px-0"><a href={human.url} target="_blank" rel="noreferrer">Fonte: Smithsonian <ArrowUpRight /></a></Button>
         </div>
       </div>
-      <p className="text-xs leading-relaxed text-muted-foreground">Representações artísticas 3D simplificadas, não reconstruções anatômicas de fósseis. Aparência, altura e proporções são ilustrativas; não permitem identificar indivíduos ou medir diferenças reais entre espécies.</p>
+      <p className="text-xs leading-relaxed text-muted-foreground">Reconstruções artísticas ilustrativas baseadas em descrições de fósseis; cor de pele, pelos e roupas são hipóteses.</p>
       <div className="mt-12 border-t pt-8">
         <h3 className="flex items-center gap-2 text-2xl font-bold"><GitBranch className="text-primary" /> Linhagens, não degraus</h3>
         <p className="mt-3 max-w-3xl text-muted-foreground">Um ancestral comum pode dar origem a vários ramos. A relação exata entre algumas espécies antigas continua em investigação. Este esquema destaca ramificação, não uma genealogia completa.</p>

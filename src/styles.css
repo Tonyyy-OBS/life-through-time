@@ -87,3 +87,11 @@
 .hominin-canvas:active { cursor: grabbing; }
 .lineage-root { border-left: 2px solid var(--muted-foreground); padding-left: 1rem; }
 .lineage-branch { margin-left: 1.5rem; margin-top: 1rem; border-left: 2px solid var(--primary); padding-left: 1rem; }
+.hominin-stage { position: relative; height: min(600px, 75vh); min-height: 420px; perspective: 1100px; display: flex; align-items: center; justify-content: center; border-radius: 1.5rem; background: radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 62%); overflow: hidden; }
+.hominin-orbit { position: absolute; width: 70%; aspect-ratio: 1; border-radius: 9999px; border: 1px dashed color-mix(in oklab, var(--primary) 45%, transparent); animation: orbit 30s linear infinite; }
+.hominin-float { height: 88%; transform-style: preserve-3d; transition: transform .25s ease-out; animation: hover-float 5s ease-in-out infinite; }
+.hominin-img { height: 100%; width: auto; object-fit: contain; filter: drop-shadow(0 25px 30px color-mix(in oklab, var(--background) 80%, transparent)) drop-shadow(0 0 30px color-mix(in oklab, var(--primary) 25%, transparent)); }
+.hominin-shadow { position: absolute; bottom: 7%; width: 40%; height: 18px; border-radius: 50%; background: radial-gradient(color-mix(in oklab, var(--background) 90%, transparent), transparent 70%); transition: transform .25s ease-out; }
+@keyframes orbit { to { rotate: 360deg; } }
+@keyframes hover-float { 50% { translate: 0 -10px; } }
+@media (prefers-reduced-motion: reduce) { .hominin-orbit, .hominin-float { animation: none; } }
