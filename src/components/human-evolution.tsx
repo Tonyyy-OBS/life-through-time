@@ -25,7 +25,7 @@ export function HumanEvolution() {
           <Button asChild variant="link" className="mt-4 px-0"><a href={human.url} target="_blank" rel="noreferrer">Fonte: Smithsonian <ArrowUpRight /></a></Button>
         </div>
       </div>
-      <p className="text-xs leading-relaxed text-muted-foreground">Reconstruções artísticas ilustrativas baseadas em descrições de fósseis; cor de pele, pelos e roupas são hipóteses.</p>
+      <p className="text-sm leading-relaxed text-muted-foreground">Reconstruções artísticas geradas por IA a partir de descrições de fósseis, não fotografias nem modelos 3D completos. A inclinação dá sensação de profundidade; aparência, pele, pelos e vestimentas são escolhas ilustrativas, não características comprovadas para cada espécie.</p>
       <div className="mt-12 border-t pt-8">
         <h3 className="flex items-center gap-2 text-2xl font-bold"><GitBranch className="text-primary" /> Linhagens, não degraus</h3>
         <p className="mt-3 max-w-3xl text-muted-foreground">Um ancestral comum pode dar origem a vários ramos. A relação exata entre algumas espécies antigas continua em investigação. Este esquema destaca ramificação, não uma genealogia completa.</p>

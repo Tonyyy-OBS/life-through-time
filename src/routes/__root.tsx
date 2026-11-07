@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header, Footer } from "@/components/site";
+import { Button } from '@/components/ui/button';
 
 function NotFoundComponent() {
   return (
@@ -38,8 +39,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold">Algo deu errado</h1>
-        <button onClick={() => { router.invalidate(); reset(); }}
-          className="mt-6 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground">Tentar de novo</button>
+        <Button onClick={() => { router.invalidate(); reset(); }} className="mt-6">Tentar de novo</Button>
       </div>
     </div>
   );
@@ -81,8 +81,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
+      <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
       <Header />
-      <Outlet />
+      <div id="conteudo" tabIndex={-1}><Outlet /></div>
       <Footer />
     </QueryClientProvider>
   );

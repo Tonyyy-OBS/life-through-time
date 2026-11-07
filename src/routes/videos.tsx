@@ -5,10 +5,12 @@ import { User, Bird, Fish, TreePine, Clapperboard, type LucideIcon } from "lucid
 export const Route = createFileRoute("/videos")({
   head: () => ({
     meta: [
-      { title: "Stop Motion — Grupo 6" },
-      { name: "description", content: "Animações em stop motion feitas pelo Grupo 6 sobre evolução e diversidade biológica." },
+      { title: "Stop Motion — Evolução e Diversidade Biológica" },
+      { name: "description", content: "Espaço para os vídeos escolares do Grupo 6 e temas de evolução para animações em stop motion." },
       { property: "og:title", content: "Stop Motion — Grupo 6" },
       { property: "og:description", content: "Nossas animações sobre evolução humana e animal." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Videos,
@@ -16,20 +18,20 @@ export const Route = createFileRoute("/videos")({
 
 // Para adicionar um vídeo: coloque o link em "src" (ex: "/videos/humano.mp4" ou link do YouTube embed)
 const videos: { t: string; d: string; I: LucideIcon; src?: string }[] = [
-  { I: User, t: "A evolução humana", d: "Do Australopithecus ao Homo sapiens, quadro a quadro." },
-  { I: Bird, t: "Dos dinossauros às aves", d: "Como os dinossauros viraram os pássaros de hoje." },
-  { I: Fish, t: "Da água para a terra", d: "Peixes, anfíbios e a conquista do continente." },
-  { I: TreePine, t: "Seleção natural", d: "Por que alguns sobrevivem e outros não." },
+  { I: User, t: "Linhagens humanas", d: "Espécies de hominínios, coexistência e ancestralidade comum — sem uma marcha até o ser humano." },
+  { I: Bird, t: "Dinossauros e aves", d: "As aves são o ramo sobrevivente dos dinossauros terópodes." },
+  { I: Fish, t: "A origem dos tetrápodes", d: "Mudanças em linhagens de vertebrados ao longo de muitas gerações, não a transformação de um peixe individual." },
+  { I: TreePine, t: "Seleção natural", d: "Variação hereditária e diferenças no sucesso reprodutivo em determinado ambiente." },
 ];
 
 function Videos() {
   return (
     <main className="mx-auto max-w-6xl px-5 pb-24 pt-32">
       <Reveal>
-        <p className="font-semibold uppercase tracking-[0.3em] text-primary">Feito à mão, quadro a quadro</p>
-        <h1 className="mt-3 text-5xl font-extrabold sm:text-6xl">Nossos <span className="text-gradient">Stop Motions</span></h1>
+        <p className="font-semibold text-primary">Evolução e Diversidade Biológica</p>
+        <h1 className="mt-3 text-4xl font-extrabold sm:text-6xl"><span className="text-gradient">Stop Motion</span></h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Cada animação foi criada fotografando massinha e bonecos centenas de vezes, movendo-os um pouquinho entre cada foto.
+          Stop motion é uma animação feita com fotografias sucessivas de objetos movidos entre os registros. Os vídeos do grupo ainda não foram enviados. Abaixo estão sugestões de temas, não produções concluídas.
         </p>
       </Reveal>
       <div className="mt-14 grid gap-8 md:grid-cols-2">
@@ -46,10 +48,10 @@ function Videos() {
                 ) : (
                   <div className="flex h-full flex-col items-center justify-center gap-3">
                     <v.I className="animate-float h-16 w-16 text-primary" strokeWidth={1.3} />
-                    <span className="rounded-full border border-dashed px-4 py-1 text-sm text-muted-foreground"><Clapperboard className="mr-1 inline h-4 w-4" />Vídeo em breve</span>
+                    <span className="text-sm text-muted-foreground"><Clapperboard className="mr-1 inline h-4 w-4" />Tema sugerido · sem vídeo enviado</span>
                   </div>
                 )}
-                <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">EP {i + 1}</span>
+                <span className="absolute left-4 top-4 text-xs font-bold text-primary">Tema {i + 1}</span>
               </div>
               <div className="p-6">
                 <h2 className="text-2xl font-bold">{v.t}</h2>

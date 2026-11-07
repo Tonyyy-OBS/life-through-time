@@ -5,10 +5,12 @@ import { User } from "lucide-react";
 export const Route = createFileRoute("/grupo")({
   head: () => ({
     meta: [
-      { title: "O Grupo — Grupo 6" },
+      { title: "O Grupo — Evolução e Diversidade Biológica" },
       { name: "description", content: "Conheça Antony, Gustavo, Miguel Carvalho e Rodrigo, o Grupo 6." },
       { property: "og:title", content: "O Grupo — Grupo 6" },
       { property: "og:description", content: "Os integrantes do projeto Evolução e Diversidade Biológica." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Grupo,
@@ -25,7 +27,8 @@ function Grupo() {
   return (
     <main className="mx-auto max-w-6xl px-5 pb-24 pt-32 text-center">
       <Reveal>
-        <h1 className="text-5xl font-extrabold sm:text-6xl">Quem <span className="text-gradient">fez</span></h1>
+        <p className="text-sm font-bold text-primary">Evolução e Diversidade Biológica · Grupo 6</p>
+        <h1 className="mt-3 text-4xl font-extrabold sm:text-6xl">Nosso <span className="text-gradient">grupo</span></h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">Quatro estudantes, uma viagem pela história da vida.</p>
       </Reveal>
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -39,6 +42,7 @@ function Grupo() {
           </Reveal>
         ))}
       </div>
+      <section className="mx-auto mt-12 max-w-2xl border-t pt-8 text-left"><h2 className="text-2xl font-bold">Autoria e participação</h2><p className="mt-3 leading-relaxed text-muted-foreground">Este projeto escolar é do Grupo 6, formado por Antony, Gustavo, Miguel Carvalho e Rodrigo. A descrição da contribuição de cada integrante será acrescentada após a confirmação do grupo; não atribuímos tarefas sem essa informação.</p></section>
     </main>
   );
 }
