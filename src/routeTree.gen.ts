@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GrupoRouteImport } from './routes/grupo'
+import { Route as ReferenciasRouteImport } from './routes/referencias'
 import { Route as VideosRouteImport } from './routes/videos'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const GrupoRoute = GrupoRouteImport.update({
   path: '/grupo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReferenciasRoute = ReferenciasRouteImport.update({
+  id: '/referencias',
+  path: '/referencias',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
@@ -32,30 +38,34 @@ const VideosRoute = VideosRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/grupo': typeof GrupoRoute
+  '/referencias': typeof ReferenciasRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/grupo': typeof GrupoRoute
+  '/referencias': typeof ReferenciasRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/grupo': typeof GrupoRoute
+  '/referencias': typeof ReferenciasRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/grupo' | '/videos'
+  fullPaths: '/' | '/grupo' | '/referencias' | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/grupo' | '/videos'
-  id: '__root__' | '/' | '/grupo' | '/videos'
+  to: '/' | '/grupo' | '/referencias' | '/videos'
+  id: '__root__' | '/' | '/grupo' | '/referencias' | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GrupoRoute: typeof GrupoRoute
+  ReferenciasRoute: typeof ReferenciasRoute
   VideosRoute: typeof VideosRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GrupoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/referencias': {
+      id: '/referencias'
+      path: '/referencias'
+      fullPath: '/referencias'
+      preLoaderRoute: typeof ReferenciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/videos': {
       id: '/videos'
       path: '/videos'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GrupoRoute: GrupoRoute,
+  ReferenciasRoute: ReferenciasRoute,
   VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport

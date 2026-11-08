@@ -11,3 +11,4 @@
 
 - Keep evolutionary teaching models as pure functions separate from UI and test their concrete outcomes; this makes simplified assumptions reproducible.
 - Use asset pointers for downloaded photographs and identify their licenses, while labeling generated extinct-species reconstructions explicitly; this preserves provenance.
+- Keep full source provenance on a dedicated references route and retain short contextual citations in teaching sections; this separates study flow from verification.

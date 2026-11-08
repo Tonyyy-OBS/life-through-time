@@ -10,7 +10,7 @@ export function HumanEvolution() {
   if (!human) return null;
   return <section id="humana" className="scroll-mt-28 border-y bg-secondary/20 py-20">
     <div className="mx-auto max-w-6xl px-5">
-      <p className="text-sm font-bold uppercase text-primary">5. Evolução humana</p>
+      <p className="text-sm font-bold uppercase text-primary">Evolução humana</p>
       <h2 className="mt-2 text-4xl font-extrabold sm:text-5xl">Nossa história tem <span className="text-primary">muitos ramos</span></h2>
       <p className="mt-4 max-w-3xl text-lg text-muted-foreground">Bipedalismo, mudanças no crânio e modos de vida distintos: a história humana não foi uma fila de espécies, nem uma marcha rumo à perfeição.</p>
       <div className="mt-8 flex flex-wrap gap-2" aria-label="Espécies de hominínios">{hominins.map((h,i) => <Button key={h.id} variant={selected===i ? 'default':'outline'} aria-pressed={selected===i} onClick={() => setSelected(i)} className="h-auto min-h-11 whitespace-normal">{h.short}</Button>)}</div>
