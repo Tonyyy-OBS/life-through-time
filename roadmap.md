@@ -8,6 +8,7 @@
 - [ ] Inserir vídeos e contribuições reais dos integrantes — depende do envio pelo grupo.
 
 ## Rubrica e revisão rigorosa
+- [x] Reorganizar o estudo em capítulos sequenciais, simplificar termos e conectar cada seção à seguinte.
 - [x] Separar Referências no menu superior, com origem e assunto de cada fonte.
 - [x] Priorizar sequência de leitura, títulos consistentes e blocos menores conforme nova solicitação.
 - [x] Ampliar mecanismos evolutivos, biodiversidade e exemplos com fontes.

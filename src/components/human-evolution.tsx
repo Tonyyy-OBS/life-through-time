@@ -3,6 +3,7 @@ import { ArrowUpRight, GitBranch, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HomininStage } from '@/components/hominin-stage';
 import { hominins } from '@/lib/evolution';
+import { ChapterBridge } from '@/components/study-navigation';
 
 export function HumanEvolution() {
   const [selected, setSelected] = useState(0);
@@ -10,9 +11,9 @@ export function HumanEvolution() {
   if (!human) return null;
   return <section id="humana" className="scroll-mt-28 border-y bg-secondary/20 py-20">
     <div className="mx-auto max-w-6xl px-5">
-      <p className="text-sm font-bold uppercase text-primary">Evolução humana</p>
+      <p className="text-sm font-bold text-primary">06 · Nossa parte nessa história</p>
       <h2 className="mt-2 text-4xl font-extrabold sm:text-5xl">Nossa história tem <span className="text-primary">muitos ramos</span></h2>
-      <p className="mt-4 max-w-3xl text-lg text-muted-foreground">Bipedalismo, mudanças no crânio e modos de vida distintos: a história humana não foi uma fila de espécies, nem uma marcha rumo à perfeição.</p>
+      <p className="mt-4 max-w-3xl text-lg text-muted-foreground">A linha do tempo chegou à nossa espécie. Agora, olhamos para seus parentes: hominínios são humanos e linhagens extintas mais próximas de nós do que dos chimpanzés. Bipedalismo significa andar sobre duas pernas. Essa capacidade surgiu antes do grande aumento cerebral.</p>
       <div className="mt-8 flex flex-wrap gap-2" aria-label="Espécies de hominínios">{hominins.map((h,i) => <Button key={h.id} variant={selected===i ? 'default':'outline'} aria-pressed={selected===i} onClick={() => setSelected(i)} className="h-auto min-h-11 whitespace-normal">{h.short}</Button>)}</div>
       <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_1fr]">
         <HomininStage species={selected} />
@@ -25,6 +26,7 @@ export function HumanEvolution() {
           <Button asChild variant="link" className="mt-4 px-0"><a href={human.url} target="_blank" rel="noreferrer">Fonte: Smithsonian <ArrowUpRight /></a></Button>
         </div>
       </div>
+      <ChapterBridge summary="A história humana tem espécies que coexistiram e linhagens que se cruzaram. Somos um ramo da vida, não o destino de todos os outros." next="O que essa árvore de parentesco tem a ver com biodiversidade?" href="diversidade" />
       <p className="text-sm leading-relaxed text-muted-foreground">Reconstruções artísticas geradas por IA a partir de descrições de fósseis, não fotografias nem modelos 3D completos. A inclinação dá sensação de profundidade; aparência, pele, pelos e vestimentas são escolhas ilustrativas, não características comprovadas para cada espécie.</p>
       <div className="mt-12 border-t pt-8">
         <h3 className="flex items-center gap-2 text-2xl font-bold"><GitBranch className="text-primary" /> Linhagens, não degraus</h3>

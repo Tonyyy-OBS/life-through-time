@@ -108,3 +108,5 @@
   .reveal { opacity: 1; transform: none; }
   .hominin-float { transform: none !important; }
 }
+main section[id] { scroll-margin-top: 10rem; }
+main p, main dd { line-height: 1.75; }

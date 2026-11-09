@@ -8,6 +8,7 @@ export function ScienceQuiz() {
   const [index,setIndex] = useState(0);
   const question = questions[index]; const choice=answers[index]; const score=scoreAnswers(answers);
   return <section id="quiz" className="mx-auto max-w-3xl scroll-mt-28 px-5 py-20"><div className="rounded-lg border bg-card p-5 sm:p-8">
+    <p className="mb-3 text-sm font-bold text-primary">10 · Reúna as ideias</p>
     <h2 className="flex items-center gap-3 text-3xl font-bold"><Brain className="shrink-0 text-primary" /> Pense como um cientista</h2>
     {!question ? <div className="mt-8" aria-live="polite"><p className="text-5xl font-bold text-primary">{score}/{questions.length}</p><p className="mt-3 text-muted-foreground">{score===questions.length ? 'Você acertou todas as questões deste quiz!' : 'Revise as explicações e tente novamente.'}</p><Button className="mt-6" onClick={() => { setAnswers([]); setIndex(0); }}><RotateCcw /> Tentar novamente</Button></div> : <>
       <p className="mt-6 text-sm text-accent">Pergunta {index+1} de {questions.length}</p><h3 className="mt-3 text-xl font-semibold">{question.q}</h3>
